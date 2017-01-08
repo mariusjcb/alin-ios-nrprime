@@ -54,14 +54,22 @@
 		7AB1CDEF1E225E7A00DB7A9E /* Prim2 */ = {
 			isa = PBXGroup;
 			children = (
-				7AB1CDF01E225E7A00DB7A9E /* AppDelegate.swift */,
 				7AB1CDF21E225E7A00DB7A9E /* ViewController.swift */,
 				7AB1CDF41E225E7A00DB7A9E /* Main.storyboard */,
+				7AB1CE021E225E8400DB7A9E /* Supporting Files */,
+			);
+			path = Prim2;
+			sourceTree = "<group>";
+		};
+		7AB1CE021E225E8400DB7A9E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7AB1CDF01E225E7A00DB7A9E /* AppDelegate.swift */,
 				7AB1CDF71E225E7A00DB7A9E /* Assets.xcassets */,
 				7AB1CDF91E225E7A00DB7A9E /* LaunchScreen.storyboard */,
 				7AB1CDFC1E225E7A00DB7A9E /* Info.plist */,
 			);
-			path = Prim2;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
