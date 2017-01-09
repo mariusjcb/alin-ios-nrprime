@@ -7,8 +7,29 @@
 //
 
 import UIKit
+import WatchConnectivity
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WCSessionDelegate {
+
+    // needed methods from
+    // WCSessionDelegate Protocol
+    
+    var watchSession: WCSession?
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
+    
+    // stop methods from
+    // WCSession
     
     var number: Int? {
         didSet {
@@ -32,6 +53,9 @@ class ViewController: UIViewController {
                 statusLabel.text = "PRIM"
                 view.backgroundColor = UIColor.green
             }
+            
+            // WCSession
+            try? watchSession?.updateApplicationContext(["isPrime" : isPrime])
         }
     }
     
@@ -68,15 +92,28 @@ class ViewController: UIViewController {
         )
     }
 
-    @IBAction func onButtonTap(_ sender: UIButton) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // apple watch
+        // WCSession
+        
+        if(WCSession.isSupported()){
+            watchSession = WCSession.default()
+            watchSession!.delegate = self
+            watchSession!.activate()
+        }
+    }
+    
+    @IBAction func onButtonTap(_ sender: AnyObject) {
         if let textFieldContent = textField.text {
             number = Int(textFieldContent)
         }
     }
     
-    @IBAction func changeNumber(_ sender: UIButton) {
-        if let currentTitle = sender.currentTitle {
-            number = Int(currentTitle)
+    @IBAction func setNumberWith(_ sender: UIButton) {
+        if let titleContent = sender.currentTitle {
+            number = Int(titleContent)
         }
     }
 }
